@@ -1,13 +1,21 @@
 //<-----------------functionality section 1 (for displaying counter start from 0 and hit target value on scroll).---------------->
 
-
+let  selectorslide = document.querySelectorAll(".reviewslide");
+let curindex=0;
 //fucntion for scroll behaviour trigger another functions.
-window.onscroll(scrollfunction());
+// window.onscroll(scrollfunction());
+
+let counterRun = false; 
+
+window.onscroll = ()=>{scrollfunction()};
 
 function scrollfunction(){
-startcounter('.stat_1_value',99,40);
-startcounter('.stat_2_value',56,50);
-startcounter('.stat_3_value',249,20);
+  if(!counterRun){
+    counterRun=true;
+  startcounter('.stat_1_value',99,40);
+  startcounter('.stat_2_value',56,50);
+  startcounter('.stat_3_value',249,20);
+}
 }
 
 //fucntion for counter update and display as per provided selctor,targetvalue,and speed.
@@ -24,6 +32,101 @@ function startcounter(selector,targetValue,speed){
     }
     },speed);
 }
+
+
+
+// <---------------Functionality for location of properties slider with manual navigation----------------------------------->
+
+//function for make a linear arrangement list like queue of each slide.
+let selectordr = document.querySelectorAll(".locationBox");
+
+initslidesdr();
+
+function initslidesdr(){
+  selectordr.forEach((locationBox,index) =>{
+     locationBox.style.left=`${(index- 0.35)*45}%`;
+    }
+  )
+}
+
+//function for updating arrangement of content after button click.
+let curindexdr=0;
+
+function updatepositiondr(){
+  looplimitdr();
+  selectordr.forEach(
+    (locationBox)=>{
+       locationBox.style.transform=`translateX(-${(curindexdr)*45}%)`;
+    }
+  )
+}
+
+//function for setting boundry of looping of content.
+function looplimitdr(){
+  if (curindexdr >= selectordr.length) {
+            curindexdr = 0;
+  } else if (curindexdr < 0) {
+            curindexdr = selectordr.length - 1;
+        }
+}
+
+//functions for displaying content based on buttons clicks.
+function prevbtndr(){
+  curindexdr--;
+  updatepositiondr();
+}
+
+
+function nextbtndr(){
+  curindexdr++;
+  updatepositiondr();
+}
+
+
+
+// <---------------Functionality for review items slider with manual navigation----------------------------------->
+
+//function for make a linear arrangement list like queue of each slide.
+// let  selectorslide = document.querySelectorAll(".reviewslide");
+// let curindex=0;
+
+initslides();
+function initslides(){  
+  selectorslide.forEach((reviewslide,index)=>{reviewslide.style.left=`${index*40}%`});
+}
+
+// function for updating arrangement of content after button click.
+
+function updateposition(){
+  looplimit();
+  selectorslide.forEach(
+    (reviewslide)=>{
+      reviewslide.style.transform=`translateX(-${curindex*20}%)`;
+    }
+  )
+}
+
+//function for setting boundry of looping of content.
+function looplimit(){
+  if (curindex >= selectorslide.length) {
+            curindex = 0;
+  } else if (curindex < 0) {
+            curindex = selectorslide.length - 1;
+        }
+}
+
+//functions for displaying content based on buttons clicks.
+function prevbtnfn(){
+  curindex--;
+  updateposition();
+}
+
+
+function nextbtnfn(){
+  curindex++;
+  updateposition();
+}
+
 
 
 
