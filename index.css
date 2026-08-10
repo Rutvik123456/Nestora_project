@@ -29,6 +29,16 @@
 
     font-weight: 400;
     font-size: 4.5rem;
+
+    /*----------------------------------- title animation--------------------------  */
+    animation-name: Titleanim;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+}
+@keyframes Titleanim{
+    0%{transform: translateY(100px);}
+    100%{transform: translateY(0px);}
 }
 
 .home_image_wrapper{    
@@ -359,20 +369,25 @@ nav a{
     display: flex; 
     justify-content: center;
     gap: 20px;
+    position: relative;
 
     overflow: hidden;
-}
-
-.location-box{
-    position: relative;
-}
-
-.location-box img{
-    width: 640px;
+    width: 1500px;
     height: 600px;
 }
 
-.location-box a{
+.locationBox{    
+    position: absolute;
+    width: 640px;
+    height: 100%;
+}
+
+.locationBox img{
+  width: 100%;
+    height: 100%;
+}
+
+.locationBox a{
     position: absolute;
     top: 10px;
     right: 15px;
@@ -382,7 +397,7 @@ nav a{
     color:var(--white);
 }
 
-.location-box p{
+.proName{
     position: absolute;
     top: 210px;
     left: 175px;
@@ -391,88 +406,122 @@ nav a{
     color: var(--white);
 }
 
-.location-box button{
+.loc-btn{
     position: absolute;
-    top: 10px;
-    left: 245px;
-    
+    left: 250px;
+    top:330px;
+
     font-size: 0.8rem;
 }
-
-.location-box div{
+.dragbtn{
     position: absolute;
     top: 410px;
-    left: 440px;
+    left: 880px;
 
+    width: 100px;    
+}
+
+.dragbtn button{
+    position: absolute;
     height: 100px;
-    width: 100px;
-    
+    width: 50px;    
+
+    cursor: pointer;
+    font-size: 3rem;
+    color:var(--white);
     background-color: var(--orange);
 }
 
-.location-box div p{
-    position: absolute;
-    top: 30px;
-    left: 15px;
-
-    font-size: 1.5rem;
-    color:var(--white);
+.dragbtn button:hover{
+    color: var(--orange);
+    background-color: var(--white);
 }
 
+.prevbtndr{
+    left: 0%;
+    border-radius: 15px 0px 0px 15px;    
+}
+
+.nextbtndr{
+    left: 50%;
+    border-radius: 0px 15px 15px 0px;
+}
 /* review section styles */
 
-.reviews{  
-  height: 480px;
-  width: 1500px;
-  
-  margin-top: 300px;
-
+ 
+/* ---------------------------------------------------------------------------- */
+.reviews{
+  margin: 200px 20px 100px 40px;
+  position: relative;
   display: flex;
-  gap: 20px;
-  overflow: hidden;
-}   
-
-.reviewcard{
-  width: 600px;
-  padding: 5px;
+  transition: transform 0.5s ease-in-out;
+    
+  height: 480px;
+  width: 1420px;
   
-  background-color: rgba(255, 255, 215, 1);  
+  overflow: hidden;
 }
 
-.review1{
-    margin-left: 200px;
-}  
+.reviewslide{
+    padding: 5px;
+    position: absolute;
+  
+    height: 100%;
+    width: 500px;
 
-.reviewcard div{
+    background-color: rgba(255, 255, 215, 1);
+}
+
+.reviewcard_rating{
     padding: 17px;
     margin: 180px 10px 0px 10px;
     
     color: var(--white);
     background-color: var(--orange);
 }
-
-.review2 div{
-    margin: 30px 10px 180px 10px;
-}
-
+ 
 .reviewcard_quote{
     margin: 15px 30px;
     line-height: 26px;
-
     white-space: nowrap;
 }
-
-.review_video_wrapper{
-    min-width: 450px; 
+         
+.review2 div{
+    margin: 30px 10px 180px 10px;
 }
 
 .review_video_wrapper video{
     height:100%;
     width:100%;
 
-    object-fit: fill;
-}
+    object-fit: cover;
+}  
 
+.slidebtn{
+    position: absolute;
+    top: 40%;
+
+    height: 50px;
+    width: 50PX;
+    border-radius: 20px;
+    
+    color: var(--white);
+    background-color: var(--orange);
+    cursor: pointer;
+}
+.slidebtn:hover{
+      color:var(--orange);
+      background-color: var(--white);
+}
+.prevbtn{
+    left:10px;
+}
+.nextbtn{
+    right:10px;
+}
+.reviewsection{
+    position: relative;
+}
 /* partnership styles section */
 
 .partnership{
@@ -486,16 +535,89 @@ nav a{
     font-weight:500;
 }
 
+
 .partnership_grid{
     margin: 50px 0px;
-
     display: flex;
     justify-content: space-around;
+    
 }
 
 .partnership_logo img{
     width: 150px;
 }
+
+/*-------------------------------------- logo animation css-------------------------------------- */
+
+.partnership_logo{
+   animation-timing-function: ease-in-out;
+   animation-duration: 3s;
+   animation-delay: 7s;
+   animation-iteration-count: 5;
+   animation-direction: normal;
+}
+
+#logo1{
+    animation-name: anim1;
+}
+@keyframes anim1{
+    0%{
+        transform: translate(0px,-50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+#logo2{
+    animation-name: anim2;
+}
+@keyframes anim2{
+    0%{
+        transform: translate(0px,50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+#logo3{
+    animation-name: anim3;
+}
+@keyframes anim3{
+    0%{
+        transform: translate(-50px,0px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+#logo4{
+    animation-name: anim4;
+}
+@keyframes anim4{
+    0%{
+        transform: translate(50px,0px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+#logo5{
+    animation-name: anim5;
+}
+@keyframes anim5{
+    0%{
+        transform: translate(50px,-50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(0px,0px);
+    }
+}
+
 
 /* contact section */
 
@@ -626,7 +748,8 @@ nav a{
 /* prefooter section */
 
 .pre_footer{
-    padding: 90px 150px;
+    padding: 90px 150px 150px 150px;
+    margin-left: 70px;
     display: flex;
     justify-content: space-evenly;
     gap: 50px;    
